@@ -9,8 +9,8 @@ import './main.styl'
 class Main extends Component {
   render () {
     return (
-      <main className="main">
-        <section className="box">
+      <main className="container">
+        <section className="content">
           <Route path="/hot" component={Hot}/>
           <Route path="/find" component={Find}/>
           <Route path="/person" component={Person}/>
