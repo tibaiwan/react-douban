@@ -1,0 +1,54 @@
+.movie-list
+  height: 86vh
+  max-height: 86vh
+  overflow: auto
+  .movie
+    display: flex
+    height: 4rem
+    padding: .34rem
+    color: #999
+    border-bottom: 1px solid #f1f1f1
+    .left
+      display: flex
+      align-items: center
+      height: 100%
+      width: 2.6rem
+      img
+        height: 100%
+    .center
+      flex: 1
+      font-size: .32rem
+      .title
+        font-size: .48rem
+        font-weight: bold
+        color: #333
+    .right
+      width: 2rem
+      padding-top: .5rem
+      padding-left: .2rem
+      color: #ff6a95
+      .collect-count
+        font-size: .3rem
+        white-space: nowrap
+      .btn-buy
+        margin-top: .14rem
+        width: 1.7rem
+        padding: .1rem
+        text-align: center
+        font-size: .4rem
+        font-weight: bold
+        letter-spacing: 1px
+        border-radius: 5px
+        border: 1px solid #ff6a95
+        user-select: none
+      .btn-buy:active
+        color: #fff
+        background-color: lighten(#ff6a95, 30%)
+        border: 1px solid lighten(#ff6a95, 30%)
+    .want
+      color: #ffad21
+      .btn-buy
+        border: 1px solid #ffad21
+      .btn-buy:active
+        background-color: lighten(#ffad21, 30%)
+        border: 1px solid lighten(#ffad21, 30%)

@@ -5,11 +5,24 @@ import './rating.styl'
 * props.rating: {max: 10, average: 7.1, stars: "35", min: 0}}
 */
 export default class Rating extends Component {
+
+  activeStars = Math.floor(parseInt(this.props.rating.stars) / 10)
+  defaultStars = 5 - this.activeStars
+
   render () {
     return (
-      <div className="rating">
+      <div className="rating-wrap">
         {
-          this.props.rating.stars === '00' ? <span>暂无评分</span> : <span>{this.props.rating.average}</span>
+          this.props.rating.stars === '00' ? '暂无评分' :
+          <div className="stars">
+            {
+              new Array(this.activeStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-xingxing active"></i>)
+            }
+            {
+              new Array(this.defaultStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-xingxing"></i>)
+            }
+            <div className="average">{this.props.rating.average}</div>
+          </div>
         }
       </div>
     )

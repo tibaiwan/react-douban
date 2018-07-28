@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import MovieList from '@/components/movieList/movieList'
 
 class willShowMovie extends Component {
+
   render () {
     return (
-      <section>
-        即将上映
-        {JSON.stringify(this.props.list)}
-      </section>
+      <div className="will-show">
+        <MovieList {...this.props} type="willShow"></MovieList>
+      </div>
     )
   }
 }

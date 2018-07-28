@@ -1,13 +1,15 @@
 import * as hot from './action-type'
 import API from '@/api/jsonp'
+import mock from '@/api/mock'
+import mock2 from '@/api/mock2'
 
 // 获取热映列表
 export const getShowingList = () => {
   return async dispatch => {
-    let result = await API.get('/v2/movie/in_theaters?count=5')
+    // let result = await API.get('/v2/movie/in_theaters?count=1')
     dispatch({
       type: hot.SHOWING_LIST,
-      showingList: result.subjects
+      showingList: mock.subjects
     })
   }
 }
