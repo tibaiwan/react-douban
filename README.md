@@ -7,9 +7,9 @@ React, Redux, React-redux, react-router-dom, axios, jsonp
 ## 启动
 npm start
 
-#### 配置局域网IP
-node_module >> react-dev-utils >> WebpackDevServerUtils
-prettyHost = '192.168.1.4';
+### 配置局域网IP
+  node_module >> react-dev-utils >> WebpackDevServerUtils：
+  prettyHost = '192.168.1.4';
 
 ### TODO
-组件tab 底边切换时有高度变动
+

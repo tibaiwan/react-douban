@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Footer from '@/components/footer/footer'
 import Hot from '../hot/hot'
 import Find from '../find/find'
@@ -14,7 +14,6 @@ class Main extends Component {
           <Route path="/hot" component={Hot}/>
           <Route path="/find" component={Find}/>
           <Route path="/person" component={Person}/>
-          {/* <Redirect to="/hot"/> */}
         </section>
         <section className="footer">
           <Footer></Footer>

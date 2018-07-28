@@ -1,0 +1,42 @@
+.card-box
+  display: flex
+  align-items: center
+  padding: .4rem 0
+  width: 50vw
+  height: 2rem
+  background-color: #fff
+  .left
+    flex: 2
+    margin-right: .2rem
+    padding-left: .4rem
+    .iconfont
+      width: 1rem
+      height: 1rem
+      color: #fff
+      border-radius: 50%
+      &.icon-fenlei
+        background-color: #663399
+      &.icon-icon4
+        font-size: 1.2em
+        background-color: #FF6699
+      &:before
+        position: relative
+        top: .3rem
+        left: .25rem
+  .middle
+    flex: 6
+    .title
+      font-size: .45rem
+    .comments
+      font-size: .3rem
+      color: #999
+  .right
+    flex: 1
+    height: 100%
+    &.border-right
+      border-right: 1px solid #f1f1f1
+    span
+      display: block
+      padding-top: .2rem
+      color: #999
+      transform: scaleY(1.8)
