@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getMovieDetail } from '@/store/common/action'
 import Rating from '@/components/rating/rating'
+import MovieDetail from '../movieDetail/movieDetail'
 import './movieList.styl'
 
 /*
@@ -13,13 +16,19 @@ import './movieList.styl'
 */
 class MovieList extends Component {
 
+  // 展示电影详情
+  showMovieDetail = id => {
+    console.log('showMovieDetail id: ', id)
+    this.props.getMovieDetail(id)
+  }
+
   render () {
     return (
       <section className="movie-list">
         {
           this.props.list.map((movie, index) => {
             return (
-              <div className="movie" key={index}>
+              <div className="movie" key={index} onClick={this.showMovieDetail.bind(this, movie.id)}>
                 <div className="left">
                   <img src={movie.images.small} alt={movie.alt} className="img"/>
                 </div>
@@ -52,9 +61,13 @@ class MovieList extends Component {
             )
           })
         }
+        {
+          this.props.commonData.movieDetail && <MovieDetail/>
+        }
+        
       </section>
     )
   }
 }
 
-export default MovieList
+export default connect(state => ({commonData: state.commonData}), {getMovieDetail})(MovieList)

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Search from '@/components/search/search'
 import TabItems from '@/components/tab/tab'
 import Card from '@/components/card/card'
+import SubTitle from '@/components/subTitle/subTitle'
+import HotMovies from './hotMovies/hotMovies'
 import './find.styl'
 
 class Hot extends Component {
@@ -17,18 +19,22 @@ class Hot extends Component {
     return (
       <div>
         <div className="search-wrap">
-          <Search></Search>
+          <Search/>
         </div>
-        <TabItems activeTab={this.state.activeTab} tabItems={this.state.tabItems} tabChange={this.tabChange}></TabItems>
+        <TabItems activeTab={this.state.activeTab} tabItems={this.state.tabItems} tabChange={this.tabChange}/>
         <div className="card-wrap">
           <Card title="找电影" comments="豆瓣高分/大陆/青春" withRightBorder>
-            <div class="iconfont icon-fenlei"></div>
+            <div className="iconfont icon-fenlei"></div>
           </Card>
           <Card title="我的影视" comments="未登录">
-            <div class="iconfont icon-icon4"></div>
+            <div className="iconfont icon-icon4"></div>
           </Card>
         </div>
-
+        <SubTitle title="豆瓣热门">
+          <div className="total">全部 99+ ></div>
+        </SubTitle>
+        <HotMovies/>
+        <SubTitle title="豆瓣 Top250"/>
       </div>
     )
   }

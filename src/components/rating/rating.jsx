@@ -21,7 +21,9 @@ export default class Rating extends Component {
             {
               new Array(this.defaultStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-xingxing"></i>)
             }
-            <div className="average">{this.props.rating.average}</div>
+            {
+              !this.props.hideAverage && <div className="average">{this.props.rating.average}</div>
+            }
           </div>
         }
       </div>

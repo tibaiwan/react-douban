@@ -43,14 +43,14 @@ class Hot extends Component {
     const willShow = document.getElementById('will-show')
     // 监听开始
     movieListWrap.addEventListener('touchstart', e => {
-      console.log('touchstart', e.targetTouches[0].pageX)
+      // console.log('touchstart', e.targetTouches[0].pageX)
       startPageX = e.targetTouches[0].pageX
     })
     // 监听进行中
     movieListWrap.addEventListener('touchmove', e => {
       let currentPosition = e.targetTouches[0].pageX
       let movingDistance = currentPosition - startPageX
-      console.log('movingDistance', movingDistance)
+      // console.log('movingDistance', movingDistance)
       if (Math.abs(movingDistance) > 20) {
         if (this.state.activeTab === 0 && movingDistance < 0) {
           // 向右滑动
@@ -66,16 +66,16 @@ class Hot extends Component {
     // 监听结束
     movieListWrap.addEventListener('touchend', e => {
       endPageX = e.changedTouches[0].pageX
-      console.log('touchend', endPageX)
+      // console.log('touchend', endPageX)
       if (endPageX - startPageX > 60) {
-        console.log('slide left')
+        // console.log('slide left')
         this.setState({
           activeTab: 0
         })
         showing.style.left = 0 + 'px'
         willShow.style.left = clientWidth + 'px'
       } else if (startPageX - endPageX > 60) {
-        console.log('slide right')
+        // console.log('slide right')
         this.setState({
           activeTab: 1
         })
