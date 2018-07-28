@@ -5,7 +5,7 @@ class ShowingMovie extends Component {
 
   render () {
     return (
-      <div className="showing">
+      <div className="showing" id="showing">
         <MovieList {...this.props} type="showing"></MovieList>
       </div>
     )

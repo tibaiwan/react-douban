@@ -5,8 +5,8 @@ import './rating.styl'
 * props.rating: {max: 10, average: 7.1, stars: "35", min: 0}}
 */
 export default class Rating extends Component {
-
-  activeStars = Math.floor(parseInt(this.props.rating.stars) / 10)
+  stars = this.props.rating.stars || 0
+  activeStars = Math.floor(parseInt(this.stars, 10) / 10);
   defaultStars = 5 - this.activeStars
 
   render () {

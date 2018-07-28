@@ -5,7 +5,7 @@ class willShowMovie extends Component {
 
   render () {
     return (
-      <div className="will-show">
+      <div className="will-show" id="will-show">
         <MovieList {...this.props} type="willShow"></MovieList>
       </div>
     )
