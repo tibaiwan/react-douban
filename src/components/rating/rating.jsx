@@ -11,18 +11,15 @@ export default class Rating extends Component {
 
   render () {
     return (
-      <div className="rating-wrap">
+      <div className="rating-box">
         {
           this.props.rating.stars === '00' ? '暂无评分' :
           <div className="stars">
             {
-              new Array(this.activeStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-xingxing active"></i>)
+              new Array(this.activeStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-star active"></i>)
             }
             {
-              new Array(this.defaultStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-xingxing"></i>)
-            }
-            {
-              !this.props.hideAverage && <div className="average">{this.props.rating.average}</div>
+              new Array(this.defaultStars).fill(0).map((item, index) => <i key={index} className="iconfont icon-star"></i>)
             }
           </div>
         }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMovieDetail } from '@/store/common/action'
+import { getMovieDetail, getMovieDetailMobie } from '@/store/common/action'
 import Rating from '@/components/rating/rating'
 import MovieDetail from '../movieDetail/movieDetail'
 import './movieList.styl'
@@ -20,6 +20,7 @@ class MovieList extends Component {
   showMovieDetail = id => {
     console.log('showMovieDetail id: ', id)
     this.props.getMovieDetail(id)
+    this.props.getMovieDetailMobie(id)
   }
 
   render () {
@@ -34,7 +35,10 @@ class MovieList extends Component {
                 </div>
                 <div className="center">
                   <div className="title">{movie.title}</div>
-                  <Rating rating={movie.rating}></Rating>
+                  <div className="rating-wrap">
+                    <Rating rating={movie.rating}></Rating>
+                    <span>{movie.rating.average}</span>
+                  </div>
                   <div className="directors">
                     <span className="director">导演：{movie.directors[0].name}</span>
                   </div>
@@ -62,12 +66,11 @@ class MovieList extends Component {
           })
         }
         {
-          this.props.commonData.movieDetail && <MovieDetail/>
+          this.props.commonData.movieDetail && this.props.commonData.movieDetail.id ? <MovieDetail/> : document.title = '豆瓣电影'
         }
-        
       </section>
     )
   }
 }
 
-export default connect(state => ({commonData: state.commonData}), {getMovieDetail})(MovieList)
+export default connect(state => ({commonData: state.commonData}), {getMovieDetail, getMovieDetailMobie})(MovieList)

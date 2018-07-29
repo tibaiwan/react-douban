@@ -34,7 +34,10 @@ class Hot extends Component {
           <div className="total">全部 99+ ></div>
         </SubTitle>
         <HotMovies/>
-        <SubTitle title="豆瓣 Top250"/>
+        {/* <SubTitle title="豆瓣 Top250"/> */}
+        <div className="bottom-image">
+          <img src={require('@/assets/images/douban/doupin.jpg')} alt=""/>
+        </div>
       </div>
     )
   }
