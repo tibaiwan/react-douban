@@ -1,0 +1,66 @@
+.person-wrap
+  .header
+    height: 26vh
+    padding: .4rem
+    color: #fff
+    background-image: url('../../assets/images/douban/person-header.jpg')
+    background-size: cover
+    .setting
+      text-align: right
+      .icon-setting
+        font-size: .6rem
+    .person-info
+      display: flex
+      align-items: center
+      padding: .4rem
+      .outer-circle
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 1.8rem
+        height: 1.8rem
+        background-color: #fff
+        border-radius: 50%
+        .inner-circle
+          position: relative
+          display: flex
+          justify-content: center
+          width: 1.76rem
+          height: 1.76rem
+          background-color: #f1f1f1
+          border-radius: 50%
+          overflow: hidden
+          .icon-morentouxiang
+            position: absolute
+            bottom: -.1rem
+            font-size: 1.5rem
+            color: #ccc
+      .info
+        margin-left: .4rem
+        font-size: .5rem
+  .tab-wrap
+    ul
+      display: flex
+      border-bottom: 1px solid #f1f1f1
+      li
+        display: flex
+        flex: 1
+        height: 1.1rem
+        justify-content: center
+        align-items: center
+        color: #ccc
+        border-bottom: 2px solid #fff
+        &.active
+          color: #333
+          border-bottom: 2px solid #333
+  .blank-area
+    height: 1.2rem
+    border-bottom: 1px solid #f1f1f1
+  .unlogin-wrap
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 8rem
+    opacity: 0.6
+    img
+      width: 30%

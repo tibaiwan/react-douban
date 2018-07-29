@@ -23,6 +23,18 @@ class MovieList extends Component {
     this.props.getMovieDetailMobie(id)
   }
 
+  // 购票
+  buyTicket = (id, event) => {
+    event.stopPropagation()
+    console.log('buyTicket id', id)
+  }
+
+  // 想看
+  wantWatch = (id, event) => {
+    event.stopPropagation()
+    console.log('wantWatch id', id)
+  }
+
   render () {
     return (
       <section className="movie-list">
@@ -53,11 +65,11 @@ class MovieList extends Component {
                   this.props.type === 'showing' ?
                   <div className="right saw">
                     <div className="collect-count">{movie.collect_count > 10000 ? `${movie.collect_count % 1000 / 10}万` : movie.collect_count}人看过</div>
-                    <div className="btn-buy">购票</div>
+                    <div className="btn-buy" onClick={this.buyTicket.bind(this, movie.id)}>购票</div>
                   </div> :
                   <div className="right want">
                     <div className="collect-count">{movie.collect_count > 10000 ? `${movie.collect_count % 1000 / 10}万` : movie.collect_count}人想看</div>
-                    <div className="btn-buy">想看</div>
+                    <div className="btn-buy" onClick={this.wantWatch.bind(this, movie.id)}>想看</div>
                   </div>
                 }
                 
@@ -66,7 +78,7 @@ class MovieList extends Component {
           })
         }
         {
-          this.props.commonData.movieDetail && this.props.commonData.movieDetail.id ? <MovieDetail/> : document.title = '豆瓣电影'
+          this.props.commonData.movieDetail && this.props.commonData.movieDetail.id && <MovieDetail/>
         }
       </section>
     )

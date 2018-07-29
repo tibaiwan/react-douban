@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clearMovieDetail } from '@/store/common/action'
-import Rating from '../rating/rating'
 import './movieDetail.styl'
-import picture from '@/assets/images/moviePicture/taitan.webp'
 
 class MovieDetail extends Component {
 
@@ -22,7 +20,7 @@ class MovieDetail extends Component {
   colorHexToRGB = (hex) => {
     let rgbArr = []
     for (let i = 0; i < 6; i = i + 2) {
-      rgbArr.push(parseInt(`0x${hex.slice(i, i + 2)}`))
+      rgbArr.push(parseInt(`0x${hex.slice(i, i + 2)}`, 16))
     }
     return `rgba(${rgbArr.join(',')}, .1)`
   }
@@ -30,6 +28,11 @@ class MovieDetail extends Component {
   // 返回
   backForward = () => {
     this.props.clearMovieDetail()
+  }
+
+  // 移除前
+  componentWillUnmount () {
+    document.title = '豆瓣电影'
   }
 
   render () {

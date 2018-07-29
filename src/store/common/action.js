@@ -1,6 +1,6 @@
 import * as common from './action-type'
 import API from '@/api/jsonp'
-import mock from '@/api/mock_movie_detail'
+// import mock from '@/api/mock_movie_detail'
 
 // 获取电影详情
 export const getMovieDetail = id => {
