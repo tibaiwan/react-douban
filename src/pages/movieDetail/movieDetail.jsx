@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { clearMovieDetail } from '@/store/common/action'
+import { getMovieDetail, getMovieDetailMobie } from '@/store/common/action'
 import './movieDetail.styl'
 
 class MovieDetail extends Component {
@@ -9,36 +11,43 @@ class MovieDetail extends Component {
     showSummary: true,
   }
 
+  componentDidMount () {
+    let movieId = this.props.match.params.id
+    console.log('movieId', movieId)
+    this.props.getMovieDetail(movieId)
+    this.props.getMovieDetailMobie(movieId)
+  }
+  
   // 展示简介详情
   showSummaryDetail = () => {
     this.setState({
       showSummary: false
     })
   }
-
+  
   // 色值：十六进制转RGB
   colorHexToRGB = (hex) => {
-    let rgbArr = []
-    for (let i = 0; i < 6; i = i + 2) {
-      rgbArr.push(parseInt(`0x${hex.slice(i, i + 2)}`, 16))
+    if (hex) {
+      let rgbArr = []
+      for (let i = 0; i < 6; i = i + 2) {
+        rgbArr.push(parseInt(`0x${hex.slice(i, i + 2)}`, 16))
+      }
+      return `rgba(${rgbArr.join(',')}, .1)`
+    } else {
+      return 'rgba(0,0,0,.1)'
     }
-    return `rgba(${rgbArr.join(',')}, .1)`
   }
 
   // 返回
   backForward = () => {
     this.props.clearMovieDetail()
-  }
-
-  // 移除前
-  componentWillUnmount () {
-    document.title = '豆瓣电影'
+    this.props.history.goBack()
   }
 
   render () {
     const movie = this.props.commonData.movieDetail
     const movieMobile = this.props.commonData.movieDetailMobile
-    document.title = movie.title
+    document.title = movie.title || '豆瓣电影'
     return (
       <section className="movie-detail-popup">
         <div className="popup-inner" style={{backgroundColor: this.colorHexToRGB(movieMobile.header_bg_color)}}>
@@ -48,19 +57,19 @@ class MovieDetail extends Component {
             <div><i className="iconfont icon-fenxiang3"></i></div>
           </div>
           <div className="picture-wrap" style={{backgroundColor: `#${movieMobile.header_bg_color}`}}>
-            <img id="movie-picture" src={movie.images.small} alt={movie.alt}/>
+            <img id="movie-picture" src={movie.images && movie.images.small} alt={movie.alt}/>
           </div>
           <div className="movie-info">
             <div className="left">
               <div className="title">{movie.title}</div>
-              <div className="info">{movie.year}{movie.genres.map((item, index) => <span key={index}> / {item}</span>)}</div>
+              <div className="info">{movie.year}{movie.genres && movie.genres.map((item, index) => <span key={index}> / {item}</span>)}</div>
               <div className="info">上映时间：{movie.pubdates || '2018-02-08(中国大陆)'}</div>
               <div className="info">片长：{movie.durations || '117分钟'}</div>
             </div>
             <div className="right evalute">
               <div className="title">豆瓣评分</div>
-              <div className="average">{movie.rating.average}</div>
-              <div className="info">{movie.rating.comments_count || '234232人'}</div>
+              <div className="average">{movie.rating && movie.rating.average}</div>
+              <div className="info">{movie.rating && movie.rating.comments_count || '234232人'}</div>
             </div>
           </div>
           <div className="btns">
@@ -78,7 +87,7 @@ class MovieDetail extends Component {
             <div className="title">简介</div>
             <div className="intro-content" style={{height: !this.state.showSummary ? 'auto' : '2.4rem'}}>
               {
-                this.state.showSummary && `${movie.summary.substr(0, 85)}...`
+                this.state.showSummary && `${movie.summary && movie.summary.substr(0, 85)}...`
               }
               {
                 this.state.showSummary && <span className="show-more" onClick={this.showSummaryDetail}> 展开</span>
@@ -93,7 +102,7 @@ class MovieDetail extends Component {
             <div className="casts">
               <div className="casts-list">
                 {
-                  movie.casts.map((cast, index) => {
+                  movie.casts && movie.casts.map((cast, index) => {
                     return (
                       <div className="photo-wrap" key={index}>
                         <img src={cast.avatars.medium} alt={cast.alt}/>
@@ -111,4 +120,4 @@ class MovieDetail extends Component {
   }
 }
 
-export default connect(state => ({commonData: state.commonData}), {clearMovieDetail})(MovieDetail)
+export default withRouter(connect(state => ({commonData: state.commonData}), {clearMovieDetail, getMovieDetail, getMovieDetailMobie})(MovieDetail))

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getMovieDetail, getMovieDetailMobie } from '@/store/common/action'
+import { withRouter } from 'react-router-dom'
 import Rating from '@/components/rating/rating'
-import MovieDetail from '../movieDetail/movieDetail'
 import './movieList.styl'
 
 /*
@@ -18,21 +17,26 @@ class MovieList extends Component {
 
   // 展示电影详情
   showMovieDetail = id => {
-    console.log('showMovieDetail id: ', id)
-    this.props.getMovieDetail(id)
-    this.props.getMovieDetailMobie(id)
+    this.props.history.push(`/douban/movie-detail/${id}`)
   }
 
   // 购票
   buyTicket = (id, event) => {
     event.stopPropagation()
     console.log('buyTicket id', id)
+    this.gotoLogin()
   }
 
   // 想看
   wantWatch = (id, event) => {
     event.stopPropagation()
     console.log('wantWatch id', id)
+    this.gotoLogin()
+  }
+
+  // 跳转至登录页面
+  gotoLogin = () => {
+    this.props.history.push('/douban/login')
   }
 
   render () {
@@ -77,12 +81,9 @@ class MovieList extends Component {
             )
           })
         }
-        {
-          this.props.commonData.movieDetail && this.props.commonData.movieDetail.id && <MovieDetail/>
-        }
       </section>
     )
   }
 }
 
-export default connect(state => ({commonData: state.commonData}), {getMovieDetail, getMovieDetailMobie})(MovieList)
+export default withRouter(connect(state => ({commonData: state.commonData}))(MovieList))

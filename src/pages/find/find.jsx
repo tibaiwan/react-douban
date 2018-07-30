@@ -15,6 +15,11 @@ class Hot extends Component {
   tabChange = () => {
   }
 
+  // 跳转至登录页面
+  gotoLogin = () => {
+    this.props.history.push('/douban/login')
+  }
+
   render () {
     return (
       <div>
@@ -26,18 +31,16 @@ class Hot extends Component {
           <Card title="找电影" comments="豆瓣高分/大陆/青春" withRightBorder>
             <div className="iconfont icon-fenlei"></div>
           </Card>
-          <Card title="我的影视" comments="未登录">
-            <div className="iconfont icon-icon4"></div>
-          </Card>
+          <div onClick={this.gotoLogin.bind(this)}>
+            <Card title="我的影视" comments="未登录">
+              <div className="iconfont icon-icon4"></div>
+            </Card>
+          </div>
         </div>
         <SubTitle title="豆瓣热门">
           <div className="total">全部 99+ ></div>
         </SubTitle>
         <HotMovies/>
-        {/* <SubTitle title="豆瓣 Top250"/> */}
-        <div className="bottom-image">
-          <img src={require('@/assets/images/douban/doupin.jpg')} alt=""/>
-        </div>
       </div>
     )
   }

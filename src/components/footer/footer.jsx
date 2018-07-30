@@ -6,9 +6,9 @@ class Footer extends Component {
   render () {
     return (
       <div className="nav-wrap">
-        <NavLink to="/hot"><NavItem iconName="icon-dianying" iconTitle="热映"></NavItem></NavLink>
-        <NavLink to="/find"><NavItem iconName="icon-yanjing" iconTitle="找片"></NavItem></NavLink>
-        <NavLink to="/person"><NavItem iconName="icon-icon_pc" iconTitle="我的"></NavItem></NavLink>
+        <NavLink to="/douban/hot"><NavItem iconName="icon-dianying" iconTitle="热映"></NavItem></NavLink>
+        <NavLink to="/douban/find"><NavItem iconName="icon-yanjing" iconTitle="找片"></NavItem></NavLink>
+        <NavLink to="/douban/person"><NavItem iconName="icon-icon_pc" iconTitle="我的"></NavItem></NavLink>
       </div>
     )
   }

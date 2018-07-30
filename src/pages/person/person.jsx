@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './person.styl'
 
 class Person extends Component {
@@ -14,6 +15,11 @@ class Person extends Component {
     })
   }
 
+  // 跳转至登录页面
+  gotoLogin = () => {
+    this.props.history.push('/douban/login')
+  }
+
   render () {
     return (
       <div className="person-wrap">
@@ -22,12 +28,12 @@ class Person extends Component {
             <i className="iconfont icon-setting"></i>
           </div>
           <div className="person-info">
-            <div className="photo outer-circle">
+            <div className="photo outer-circle" onClick={this.gotoLogin.bind(this)}>
               <div className="inner-circle">
                 <i className="iconfont icon-morentouxiang"></i>
               </div>
             </div>
-            <div className="info">请登录</div>
+            <div className="info" onClick={this.gotoLogin.bind(this)}>请登录</div>
           </div>
         </div>
         <div className="tab-wrap">
@@ -46,4 +52,4 @@ class Person extends Component {
   }
 }
 
-export default Person
+export default withRouter(Person)
