@@ -2,10 +2,10 @@
 模仿豆瓣电影APP
 
 ## 技术栈
-React, Redux, React-redux, react-router-dom, axios, jsonp
+React, Redux, React-redux, React-router-dom, Axios, Jsonp
 
 ## 启动
 npm start
 
-### TODO
+### TODO LIST
 
