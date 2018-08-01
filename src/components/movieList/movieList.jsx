@@ -17,7 +17,7 @@ class MovieList extends Component {
 
   // 展示电影详情
   showMovieDetail = id => {
-    this.props.history.push(`/douban/movie-detail/${id}`)
+    this.props.history.push(`/movie-detail/${id}`)
   }
 
   // 购票
@@ -36,7 +36,7 @@ class MovieList extends Component {
 
   // 跳转至登录页面
   gotoLogin = () => {
-    this.props.history.push('/douban/login')
+    this.props.history.push('/login')
   }
 
   render () {

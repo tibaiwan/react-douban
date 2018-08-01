@@ -13,7 +13,7 @@ class HotMovies extends Component {
 
   // 展示电影详情
   showMovieDetail = id => {
-    this.props.history.push(`/douban/movie-detail/${id}`)
+    this.props.history.push(`/movie-detail/${id}`)
   }
 
   render () {
