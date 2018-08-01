@@ -6,6 +6,10 @@
 # testing
 /coverage
 
+# production
+/bulid
+
+
 # misc
 .DS_Store
 .env.local
