@@ -324,7 +324,7 @@
   height: 26vh;
   padding: 0.4rem;
   color: #fff;
-  background-image: url(/douban/static/media/person-header.61864eab.jpg);
+  background-image: url(/react-douban/static/media/person-header.61864eab.jpg);
   background-size: cover;
 }
 .person-wrap .header .setting {
@@ -720,4 +720,4 @@ li {
   list-style: none;
 }
 
-/*# sourceMappingURL=main.9cbc5c6a.css.map*/
+/*# sourceMappingURL=main.d5a5e132.css.map*/
